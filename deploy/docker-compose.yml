@@ -1,0 +1,38 @@
+name: app-starter-kit
+
+services:
+  # Edge reverse proxy: terminates TLS (Cloudflare Origin cert) and routes to
+  # app containers by their Docker labels. This is the piece that will later
+  # route staging / ephemeral environments automatically.
+  traefik:
+    image: traefik:v3.7
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - ./traefik/dynamic:/etc/traefik/dynamic:ro
+      - ./certs:/certs:ro
+    networks:
+      - web
+
+  # The App Starter Kit web app (SSR). Not published to the host — only Traefik reaches it,
+  # over the internal network, on port 3000.
+  app:
+    image: ${IMAGE:-ghcr.io/your-org/app-starter-kit/web:latest}
+    restart: unless-stopped
+    environment:
+      - PORT=3000
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`example.com`)"
+      - "traefik.http.routers.app.entrypoints=websecure"
+      - "traefik.http.routers.app.tls=true"
+      - "traefik.http.services.app.loadbalancer.server.port=3000"
+
+networks:
+  web:

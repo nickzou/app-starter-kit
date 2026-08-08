@@ -1,0 +1,23 @@
+import { expo } from "@better-auth/expo"
+import { betterAuth } from "better-auth"
+import { drizzleAdapter } from "better-auth/adapters/drizzle"
+import { bearer } from "better-auth/plugins"
+import { db } from "./db"
+import * as schema from "./db/schema"
+import { env } from "./env"
+
+// The mobile app (apps/mobile) authenticates via its deep-link scheme rather
+// than a browser origin; the expo() plugin handles its token-in-header flow.
+const MOBILE_SCHEME = "appstarterkit://"
+
+export const auth = betterAuth({
+  baseURL: env.BETTER_AUTH_URL,
+  secret: env.BETTER_AUTH_SECRET,
+  trustedOrigins: [...env.TRUSTED_ORIGINS.split(","), MOBILE_SCHEME],
+  database: drizzleAdapter(db, { provider: "pg", schema }),
+  emailAndPassword: { enabled: true },
+  // expo(): mobile token-in-header flow. bearer(): lets the packaged desktop app
+  // (served from tauri://, where cross-site cookies aren't sent) authenticate
+  // with an Authorization: Bearer token instead. Web stays on cookies.
+  plugins: [expo(), bearer()],
+})

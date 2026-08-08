@@ -1,0 +1,63 @@
+{
+  description = "App Starter Kit — NixOS dev shell (Tauri toolchain + Playwright browsers)";
+
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+
+  outputs = { self, nixpkgs }:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
+    in
+    {
+      # Native toolchain the project needs on NixOS. Rust (rustc/cargo) and
+      # Node/pnpm come from the ambient profile.
+      # Enter with `nix develop`, then e.g. `pnpm tauri dev` or
+      # `pnpm --filter @app-starter-kit/e2e test`.
+      devShells.${system}.default = pkgs.mkShell {
+        nativeBuildInputs = with pkgs; [
+          cargo-tauri # the Tauri CLI, nix-built (the npm one's prebuilt binary won't run on NixOS)
+          pkg-config
+          gobject-introspection
+          wrapGAppsHook3
+          maestro # mobile (Expo/RN) e2e runner
+          android-tools # adb, so Maestro can reach a device/emulator
+          xvfb-run # headless X for the desktop (Tauri/WebKitWebDriver) e2e
+        ];
+
+        # GTK/WebKit stack Tauri compiles + links against.
+        buildInputs = with pkgs; [
+          at-spi2-atk
+          atkmm
+          cairo
+          gdk-pixbuf
+          glib
+          gtk3
+          harfbuzz
+          librsvg
+          libsoup_3
+          pango
+          webkitgtk_4_1
+          openssl
+        ];
+
+        # Playwright (e2e): use the nix-provided browsers — Playwright's prebuilt
+        # ones don't run on NixOS. Version-matched to @playwright/test (both
+        # 1.59.1 here); keep them in lockstep when bumping either.
+        PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+        PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+
+        # Maestro (mobile e2e): opt out of anonymous analytics.
+        MAESTRO_CLI_NO_ANALYTICS = "1";
+
+        # Desktop e2e (WebdriverIO + tauri-driver): the native WebDriver that
+        # tauri-driver proxies to. Not on PATH from buildInputs, so hand its
+        # store path to wdio.conf via --native-driver. (tauri-driver itself is
+        # cargo-installed — see desktop-e2e/README.md — since it's not packaged.)
+        WEBKIT_WEB_DRIVER = "${pkgs.webkitgtk_4_1}/bin/WebKitWebDriver";
+
+        shellHook = ''
+          echo "🦀 App Starter Kit dev shell — rustc $(rustc --version 2>/dev/null | awk '{print $2}'); Playwright browsers wired"
+        '';
+      };
+    };
+}

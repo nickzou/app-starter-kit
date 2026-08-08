@@ -1,0 +1,4 @@
+# Copy to terraform.tfvars (gitignored) and fill in for your Hetzner project.
+ssh_key_name = "your_hcloud_ssh_key_name" # an SSH key already uploaded to Hetzner
+server_type  = "cpx11"                    # e.g. cpx11 (x86) / cax11 (arm)
+location     = "ash"                      # e.g. ash, hel1, nbg1, fsn1

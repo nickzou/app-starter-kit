@@ -1,0 +1,33 @@
+{
+  "name": "@app-starter-kit/mobile",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "@better-auth/expo": "1.4.22",
+    "better-auth": "1.4.22",
+    "expo": "~57.0.9",
+    "expo-build-properties": "~57.0.9",
+    "expo-constants": "~57.0.9",
+    "expo-dev-client": "~57.0.10",
+    "expo-linking": "~57.0.5",
+    "expo-network": "~57.0.1",
+    "expo-secure-store": "~57.0.1",
+    "expo-status-bar": "~57.0.1",
+    "expo-web-browser": "~57.0.2",
+    "react": "19.2.3",
+    "react-native": "0.86.2"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.17",
+    "typescript": "~6.0.3"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "maestro test .maestro"
+  },
+  "private": true
+}

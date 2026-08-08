@@ -1,0 +1,16 @@
+{
+  "name": "app-starter-kit",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=24.16.0"
+  },
+  "scripts": {
+    "personalize": "node scripts/personalize.mjs"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.15",
+    "turbo": "^2.10.7"
+  }
+}
