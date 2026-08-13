@@ -1,3 +1,5 @@
+import { useTRPC } from "@app-starter-kit/api-client"
+import { useQuery } from "@tanstack/react-query"
 import { createFileRoute, Link } from "@tanstack/react-router"
 import { signOut, useSession } from "#/lib/auth-client"
 
@@ -40,12 +42,43 @@ function AuthBar() {
   )
 }
 
-const sampleTasks = [
-  { id: 1, title: "Set up the monorepo", done: true },
-  { id: 2, title: "Stand up the web + desktop shells", done: false },
-  { id: 3, title: 'Figure out what a "task" actually is in App Starter Kit', done: false },
-  { id: 4, title: "Wire the UI to real data (Milestone 07)", done: false },
-]
+// Live calls against the tRPC API — proves the client/server + auth context are
+// wired up. `ping` is public; `whoami` is protected (401 until you sign in).
+function ApiDemo() {
+  const trpc = useTRPC()
+  const ping = useQuery(trpc.example.ping.queryOptions())
+  const whoami = useQuery(trpc.example.whoami.queryOptions(undefined, { retry: false }))
+
+  return (
+    <section>
+      <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-neutral-400">
+        tRPC — live from the API
+      </h2>
+      <ul className="space-y-2">
+        <li className="flex items-center justify-between rounded-lg border border-neutral-800 bg-neutral-900 px-4 py-3">
+          <span className="font-mono text-sm text-neutral-300">example.ping</span>
+          <span className="text-sm text-neutral-400">
+            {ping.isPending
+              ? "…"
+              : ping.isError
+                ? `error: ${ping.error.message}`
+                : `ok · ${ping.data.at}`}
+          </span>
+        </li>
+        <li className="flex items-center justify-between rounded-lg border border-neutral-800 bg-neutral-900 px-4 py-3">
+          <span className="font-mono text-sm text-neutral-300">example.whoami</span>
+          <span className="text-sm text-neutral-400">
+            {whoami.isPending
+              ? "…"
+              : whoami.isError
+                ? "sign in to see your user id"
+                : whoami.data.userId}
+          </span>
+        </li>
+      </ul>
+    </section>
+  )
+}
 
 function Home() {
   return (
@@ -58,40 +91,16 @@ function Home() {
           </h1>
           <p className="mt-2 italic text-neutral-400">web · desktop · mobile — one stack</p>
           <p className="mt-4 text-xs uppercase tracking-widest text-neutral-500">
-            Hello world · static shell
+            tRPC · TanStack Query · Better Auth
           </p>
         </header>
 
-        <section>
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-neutral-400">
-            Sample tasks (hard-coded)
-          </h2>
-          <ul className="space-y-2">
-            {sampleTasks.map((task) => (
-              <li
-                key={task.id}
-                className="flex items-center gap-3 rounded-lg border border-neutral-800 bg-neutral-900 px-4 py-3"
-              >
-                <span
-                  className={`flex h-5 w-5 items-center justify-center rounded border text-xs ${
-                    task.done
-                      ? "border-emerald-500 bg-emerald-500/20 text-emerald-400"
-                      : "border-neutral-600"
-                  }`}
-                >
-                  {task.done ? "✓" : ""}
-                </span>
-                <span className={task.done ? "text-neutral-500 line-through" : ""}>
-                  {task.title}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <ApiDemo />
 
         <footer className="mt-12 text-xs leading-relaxed text-neutral-600">
-          No backend yet — this list is fake data, on purpose. The real data model comes in
-          Milestone 04, shaped by living in this shell first.
+          Wired to a real tRPC backend via{" "}
+          <span className="font-mono">@app-starter-kit/api-client</span>. Swap the{" "}
+          <span className="font-mono">example</span> router for your own to start building.
         </footer>
       </div>
     </main>

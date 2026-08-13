@@ -9,7 +9,7 @@
 // It rewrites the mechanical bits (package scope, display name, bundle ids, URL
 // scheme, dev DB name). The things a script can't do — eas init, a deploy
 // keypair, CI secrets — are printed as a checklist at the end.
-import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs"
+import { readdirSync, readFileSync, writeFileSync } from "node:fs"
 import { dirname, extname, join, relative } from "node:path"
 import { argv, exit, stdin, stdout } from "node:process"
 import { createInterface } from "node:readline/promises"
@@ -137,7 +137,7 @@ async function main() {
   }
 
   console.log(`\n${args.dryRun ? "[dry-run] would change" : "changed"} ${touched.length} files:`)
-  for (const t of touched.sort()) console.log("  " + t)
+  for (const t of touched.sort()) console.log(`  ${t}`)
   console.log("\nmapping:")
   console.log(`  scope        @app-starter-kit              ->  ${v.scope}`)
   console.log(`  display      App Starter Kit               ->  ${v.name}`)

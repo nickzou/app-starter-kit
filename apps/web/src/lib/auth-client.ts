@@ -32,6 +32,14 @@ export const authClient = createAuthClient({
 
 export const { signIn, signUp, useSession } = authClient
 
+// The tRPC client (lib/api.tsx) attaches this as an Authorization: Bearer token.
+// On desktop it returns the stored token; on web it returns null so the session
+// cookie is used instead (and it's null during SSR, where there's no localStorage).
+export function getStoredToken(): string | null {
+  if (typeof window === "undefined") return null
+  return useTokens ? localStorage.getItem(TOKEN_KEY) : null
+}
+
 // On desktop there's no cookie for the browser to drop, so clear the stored
 // token ourselves. Wrap signOut so callers don't need to know which mode we're in.
 export async function signOut() {

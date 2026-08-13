@@ -1,0 +1,28 @@
+{
+  "name": "@app-starter-kit/api-client",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@trpc/client": "^11.18.0",
+    "@trpc/tanstack-react-query": "^11.18.0"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5",
+    "react": "^19"
+  },
+  "devDependencies": {
+    "@app-starter-kit/api": "workspace:*",
+    "@app-starter-kit/tsconfig": "workspace:*",
+    "@tanstack/react-query": "^5.90.0",
+    "@types/react": "^19.2.0",
+    "react": "^19.2.0",
+    "typescript": "^6.0.2"
+  }
+}

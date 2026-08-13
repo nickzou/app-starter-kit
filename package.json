@@ -7,10 +7,16 @@
     "node": ">=24.16.0"
   },
   "scripts": {
-    "personalize": "node scripts/personalize.mjs"
+    "personalize": "node scripts/personalize.mjs",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test --filter=@app-starter-kit/api",
+    "check": "biome check . && turbo typecheck",
+    "format": "biome check --write .",
+    "lint:actions": "actionlint",
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.15",
+    "@biomejs/biome": "2.5.7",
     "turbo": "^2.10.7"
   }
 }
