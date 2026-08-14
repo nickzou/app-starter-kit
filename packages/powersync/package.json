@@ -1,0 +1,23 @@
+{
+  "name": "@app-starter-kit/powersync",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@powersync/common": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@app-starter-kit/api-client": "workspace:*"
+  },
+  "devDependencies": {
+    "@app-starter-kit/api-client": "workspace:*",
+    "@app-starter-kit/tsconfig": "workspace:*",
+    "typescript": "^6.0.2"
+  }
+}

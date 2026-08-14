@@ -1,8 +1,10 @@
 import { router } from "./init"
 import { exampleRouter } from "./routers/example"
+import { notesRouter } from "./routers/notes"
 
 export const appRouter = router({
   example: exampleRouter,
+  notes: notesRouter,
 })
 
 // The single type the clients import (@app-starter-kit/api/router) to get

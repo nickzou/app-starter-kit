@@ -72,11 +72,13 @@ jobs:
           path: e2e/playwright-report/
           retention-days: 7
 
+  # Production deployment is disabled until environments are configured.
   deploy:
     needs: [check, e2e]
-    # Deploy ONLY on pushes that land on main. Every feature branch and PR runs
-    # the checks above but never deploys.
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # DISABLED: Deploy to production requires DEPLOY_SSH_KEY, DEPLOY_HOST (vars) and
+    # ORIGIN_CERT, ORIGIN_KEY (secrets). To re-enable, change condition below to:
+    #   github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' && vars.PROD_DEPLOYMENT_ENABLED == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read

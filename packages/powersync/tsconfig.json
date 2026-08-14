@@ -1,0 +1,16 @@
+{
+  "extends": "@app-starter-kit/tsconfig/base.json",
+  "compilerOptions": {
+    "types": [],
+    "lib": ["ES2022", "DOM"],
+    "noEmit": true,
+    // Consumed as source (exports ./src), never emitted to .d.ts — the connector's
+    // inferred types transitively reference the tRPC client's server schema, which
+    // isn't portable across the declaration boundary. Disable emit.
+    "declaration": false,
+    "declarationMap": false,
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
+  },
+  "include": ["src/**/*.ts"]
+}

@@ -1,18 +1,20 @@
-// Runtime configuration for the web app — currently just the API URL.
+// Runtime configuration for the web app — the API and PowerSync URLs.
 //
-// Resolved at runtime rather than inlined by Vite at build time, so one built
-// image can serve multiple environments: a deployed SSR server reads the URL
-// from its container env and injects it as window.__APP_CONFIG__. Until that's
-// wired up (deploy), this simply falls back to the build-time VITE_API_URL (or
-// localhost), matching the app's prior behavior.
+// These differ per environment (prod, staging, each PR preview). Vite would
+// inline VITE_ vars at *build* time, baking one URL into the bundle — so instead
+// the SSR server reads them from its runtime env and injects them as
+// window.__APP_CONFIG__ (see routes/__root.tsx). One built image then serves
+// every environment; only the container's env vars change.
 //
 // Resolution order:
-//   - SSR (server): process.env.API_URL — the container's runtime env
-//   - browser, injected: window.__APP_CONFIG__ (set by the SSR shell, if present)
-//   - browser / desktop SPA, no injection: build-time VITE_API_URL, else localhost
+//   - SSR (server): process.env.API_URL / POWERSYNC_URL — the container's env
+//   - browser, deployed web: window.__APP_CONFIG__ (injected by the SSR shell)
+//   - browser, no injection (desktop SPA — `tauri build`, no server):
+//     the build-time VITE_ vars, exactly as before.
 
 export type AppConfig = {
   apiUrl: string
+  powersyncUrl: string
 }
 
 declare global {
@@ -22,6 +24,7 @@ declare global {
 }
 
 const DEFAULT_API_URL = "http://localhost:3001"
+const DEFAULT_POWERSYNC_URL = "http://localhost:8080"
 
 // Bracketed access so Vite doesn't statically replace it in the client bundle;
 // `process` is undefined in the browser, so guard on it first.
@@ -29,17 +32,22 @@ function serverEnv(name: string): string | undefined {
   return typeof process !== "undefined" ? process.env[name] : undefined
 }
 
-// Build-time value (inlined by Vite). The desktop/mobile SPA fallback.
+// Build-time values (inlined by Vite). Only the desktop/mobile SPA fallback.
 function buildTimeConfig(): AppConfig {
   return {
     apiUrl: import.meta.env.VITE_API_URL ?? DEFAULT_API_URL,
+    powersyncUrl: import.meta.env.VITE_POWERSYNC_URL ?? DEFAULT_POWERSYNC_URL,
   }
 }
 
 export function getConfig(): AppConfig {
   // Server-side render: the container's runtime env wins, else build-time.
   if (typeof window === "undefined") {
-    return { apiUrl: serverEnv("API_URL") ?? buildTimeConfig().apiUrl }
+    const build = buildTimeConfig()
+    return {
+      apiUrl: serverEnv("API_URL") ?? build.apiUrl,
+      powersyncUrl: serverEnv("POWERSYNC_URL") ?? build.powersyncUrl,
+    }
   }
   // Browser: the SSR-injected config if present, else build-time (desktop SPA).
   return window.__APP_CONFIG__ ?? buildTimeConfig()

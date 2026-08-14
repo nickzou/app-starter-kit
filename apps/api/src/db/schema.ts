@@ -1,11 +1,11 @@
 import { relations } from "drizzle-orm"
-import { boolean, index, pgTable, text, timestamp } from "drizzle-orm/pg-core"
+import { index, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core"
 
 export const user = pgTable("user", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
-  emailVerified: boolean("email_verified").default(false).notNull(),
+  emailVerified: text("email_verified").default("false").notNull(),
   image: text("image"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
@@ -71,6 +71,40 @@ export const verification = pgTable(
       .notNull(),
   },
   (table) => [index("verification_identifier_idx").on(table.identifier)],
+)
+
+export const jwks = pgTable("jwks", {
+  id: text("id").primaryKey(),
+  publicKey: text("public_key").notNull(),
+  privateKey: text("private_key").notNull(),
+  createdAt: timestamp("created_at").notNull(),
+  expiresAt: timestamp("expires_at"),
+})
+
+// Notes table — a generic synced resource demonstrating offline-first patterns.
+// This is the persistence mirror of a shared noteSchema, plus the DB-only `userId`
+// owner (a row belongs to exactly one user).
+//
+// Timestamps are real `timestamptz` (Drizzle Date mode); the API converts them
+// to ISO strings at the edge to match the wire contract. `deletedAt` is a
+// nullable tombstone — set on soft delete, filtered out of reads and sync.
+export const notes = pgTable(
+  "notes",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    body: text("body").notNull().default(""),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .defaultNow()
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+    deletedAt: timestamp("deleted_at", { withTimezone: true }),
+  },
+  (table) => [index("notes_user_id_idx").on(table.userId)],
 )
 
 export const userRelations = relations(user, ({ many }) => ({
