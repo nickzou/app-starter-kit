@@ -1,7 +1,10 @@
 import { useTRPC } from "@app-starter-kit/api-client"
+import { usePowerSync, useQuery as usePowerSyncQuery } from "@powersync/react"
 import { useQuery } from "@tanstack/react-query"
 import { createFileRoute, Link } from "@tanstack/react-router"
+import { type FormEvent, useEffect, useState } from "react"
 import { signOut, useSession } from "#/lib/auth-client"
+import { PowerSyncProvider } from "#/lib/powersync/provider"
 
 export const Route = createFileRoute("/")({ component: Home })
 
@@ -80,6 +83,147 @@ function ApiDemo() {
   )
 }
 
+// Renders the local database only in the browser, for a signed-in user.
+// @powersync/web (wa-sqlite) can't run during SSR, and there's nothing to sync
+// until we can mint a token — so gate on both `mounted` and `session` before
+// mounting the provider, which owns the DB lifecycle.
+function Notes() {
+  const { data: session, isPending } = useSession()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  if (isPending || !mounted) return null
+  if (!session) {
+    return (
+      <section className="mt-10">
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-neutral-400">
+          Notes — offline-first
+        </h2>
+        <p className="text-sm text-neutral-400">
+          <Link to="/sign-in" className="text-sky-400 hover:underline">
+            Sign in
+          </Link>{" "}
+          to see your notes — they sync offline via PowerSync.
+        </p>
+      </section>
+    )
+  }
+
+  return (
+    <PowerSyncProvider>
+      <NoteList />
+    </PowerSyncProvider>
+  )
+}
+
+// Reads and writes go straight to local SQLite. usePowerSyncQuery is live — it
+// re-runs whenever the notes table changes, whether from a local write or a row
+// synced down from the server — so there's no cache to invalidate and no
+// optimistic bookkeeping. PowerSync uploads the local writes to the API in the
+// background.
+type NoteRow = { id: string; title: string; body: string }
+
+function NoteList() {
+  const db = usePowerSync()
+  const [title, setTitle] = useState("")
+  const [body, setBody] = useState("")
+  const { data: notes, isLoading } = usePowerSyncQuery<NoteRow>(
+    "SELECT id, title, body FROM notes ORDER BY created_at DESC",
+  )
+
+  async function add(event: FormEvent) {
+    event.preventDefault()
+    const trimmed = title.trim()
+    if (!trimmed) return
+    const now = new Date().toISOString()
+    await db.execute(
+      "INSERT INTO notes (id, title, body, created_at, updated_at) VALUES (?, ?, ?, ?, ?)",
+      [crypto.randomUUID(), trimmed, body.trim(), now, now],
+    )
+    setTitle("")
+    setBody("")
+  }
+
+  const rename = (note: NoteRow) => {
+    const next = window.prompt("Edit title", note.title)
+    if (next === null) return
+    return db.execute("UPDATE notes SET title = ?, updated_at = ? WHERE id = ?", [
+      next.trim(),
+      new Date().toISOString(),
+      note.id,
+    ])
+  }
+
+  const remove = (id: string) => db.execute("DELETE FROM notes WHERE id = ?", [id])
+
+  return (
+    <section className="mt-10">
+      <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-neutral-400">
+        Notes — offline-first
+      </h2>
+
+      <form onSubmit={add} className="mb-4 space-y-2">
+        <input
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+          placeholder="Note title…"
+          className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-neutral-100 outline-none focus:border-sky-500"
+        />
+        <textarea
+          value={body}
+          onChange={(event) => setBody(event.target.value)}
+          placeholder="Body (optional)…"
+          rows={2}
+          className="w-full rounded-lg border border-neutral-700 bg-neutral-950 px-3 py-2 text-neutral-100 outline-none focus:border-sky-500"
+        />
+        <button
+          type="submit"
+          disabled={!title.trim()}
+          className="rounded-lg bg-sky-500 px-4 py-2 font-medium text-neutral-950 transition hover:bg-sky-400 disabled:opacity-50"
+        >
+          Add note
+        </button>
+      </form>
+
+      {isLoading ? (
+        <p className="text-sm text-neutral-500">Loading…</p>
+      ) : notes.length === 0 ? (
+        <p className="text-sm text-neutral-500">No notes yet — add your first above.</p>
+      ) : (
+        <ul className="space-y-2">
+          {notes.map((note) => (
+            <li
+              key={note.id}
+              className="flex items-start gap-3 rounded-lg border border-neutral-800 bg-neutral-900 px-4 py-3"
+            >
+              <div className="flex-1">
+                <p className="font-medium text-neutral-100">{note.title}</p>
+                {note.body ? <p className="mt-1 text-sm text-neutral-400">{note.body}</p> : null}
+              </div>
+              <button
+                type="button"
+                onClick={() => rename(note)}
+                aria-label="Edit note"
+                className="text-neutral-500 transition hover:text-sky-400"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                onClick={() => remove(note.id)}
+                aria-label="Delete note"
+                className="text-neutral-600 transition hover:text-red-400"
+              >
+                ✕
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )
+}
+
 function Home() {
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-100">
@@ -96,6 +240,8 @@ function Home() {
         </header>
 
         <ApiDemo />
+
+        <Notes />
 
         <footer className="mt-12 text-xs leading-relaxed text-neutral-600">
           Wired to a real tRPC backend via{" "}

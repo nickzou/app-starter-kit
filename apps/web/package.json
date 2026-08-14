@@ -16,6 +16,10 @@
   },
   "dependencies": {
     "@app-starter-kit/api-client": "workspace:*",
+    "@app-starter-kit/powersync": "workspace:*",
+    "@powersync/common": "^2.0.0",
+    "@powersync/react": "^2.0.0",
+    "@powersync/web": "^2.1.1",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "0.10.9",
     "@tanstack/react-query": "^5.90.0",
@@ -38,6 +42,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "typescript": "^6.0.2",
     "vite": "^8.0.0",
+    "vite-plugin-wasm": "^3.6.0",
     "@app-starter-kit/tsconfig": "workspace:*"
   }
 }

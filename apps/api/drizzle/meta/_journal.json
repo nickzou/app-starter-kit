@@ -8,6 +8,20 @@
       "when": 1785851862654,
       "tag": "0000_careful_gambit",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1786671657224,
+      "tag": "0001_glossy_joystick",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1786671658000,
+      "tag": "0002_powersync_publication",
+      "breakpoints": true
     }
   ]
 }
