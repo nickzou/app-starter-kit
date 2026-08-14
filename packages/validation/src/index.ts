@@ -1,9 +1,9 @@
 export {
-  type Note,
   type NewNote,
+  type Note,
+  newNoteSchema,
   noteIdSchema,
   noteSchema,
   type UpdateNote,
-  newNoteSchema,
   updateNoteSchema,
 } from "./note"

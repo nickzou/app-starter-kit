@@ -3,11 +3,11 @@
 // shared contract is proven to resolve across the workspace. The tRPC procedures
 // validate their inputs against these.
 export {
-  type Note,
   type NewNote,
+  type Note,
+  newNoteSchema,
   noteIdSchema,
   noteSchema,
   type UpdateNote,
-  newNoteSchema,
   updateNoteSchema,
 } from "@app-starter-kit/validation"

@@ -1,0 +1,7 @@
+{
+  "extends": "@app-starter-kit/tsconfig/base.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": ["src/**/*.ts"]
+}
