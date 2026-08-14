@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
+    "@app-starter-kit/api-client": "workspace:*",
+    "@app-starter-kit/powersync": "workspace:*",
     "@better-auth/expo": "1.4.22",
+    "@powersync/react": "^2.0.0",
+    "@powersync/react-native": "^2.0.2",
     "better-auth": "1.4.22",
     "expo": "~57.0.9",
     "expo-build-properties": "~57.0.9",

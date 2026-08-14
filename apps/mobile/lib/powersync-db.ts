@@ -1,5 +1,5 @@
-import { PowerSyncDatabase } from "@powersync/react-native"
 import { AppSchema } from "@app-starter-kit/powersync"
+import { PowerSyncDatabase } from "@powersync/react-native"
 
 // A single PowerSync database for the app's lifetime, kept as a module singleton
 // (not per-mount). This is what makes offline writes durable: a transient session

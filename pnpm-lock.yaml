@@ -17,21 +17,24 @@ importers:
 
   apps/api:
     dependencies:
+      '@app-starter-kit/validation':
+        specifier: workspace:*
+        version: link:../../packages/validation
       '@better-auth/expo':
         specifier: 1.4.22
-        version: 1.4.22(18c9b9f0c1337b2743f820c040a5682a)
+        version: 1.4.22(a5fa77df32a198f99e01bd2417599759)
       '@trpc/server':
         specifier: ^11.18.0
         version: 11.18.0(typescript@6.0.3)
       better-auth:
         specifier: 1.4.22
-        version: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
+        version: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
       drizzle-orm:
         specifier: ^0.44.0
-        version: 0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
+        version: 0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
       nitro:
         specifier: 3.0.260610-beta
-        version: 3.0.260610-beta(better-sqlite3@12.11.1)(chokidar@5.0.0)(dotenv@17.4.2)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(giget@3.3.1)(jiti@2.7.0)(lru-cache@11.5.2)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))
+        version: 3.0.260610-beta(better-sqlite3@12.11.1)(chokidar@5.0.0)(dotenv@17.4.2)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(giget@3.3.1)(jiti@2.7.0)(lru-cache@11.5.2)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))
       postgres:
         specifier: ^3.4.0
         version: 3.4.9
@@ -44,7 +47,7 @@ importers:
         version: link:../../packages/tsconfig
       '@better-auth/cli':
         specifier: 1.4.22
-        version: 1.4.22(@better-fetch/fetch@1.1.21)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-call@1.1.8(zod@4.4.3))(drizzle-kit@0.31.10)(jose@6.2.8)(kysely@0.29.4)(nanostores@1.4.2)(postgres@3.4.9)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
+        version: 1.4.22(@better-fetch/fetch@1.1.21)(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-call@1.1.8(zod@4.4.3))(drizzle-kit@0.31.10)(jose@6.2.8)(kysely@0.29.4)(nanostores@1.4.2)(postgres@3.4.9)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
       '@types/node':
         specifier: ^22.10.2
         version: 22.20.1
@@ -66,12 +69,24 @@ importers:
 
   apps/mobile:
     dependencies:
+      '@app-starter-kit/api-client':
+        specifier: workspace:*
+        version: link:../../packages/api-client
+      '@app-starter-kit/powersync':
+        specifier: workspace:*
+        version: link:../../packages/powersync
       '@better-auth/expo':
         specifier: 1.4.22
-        version: 1.4.22(9a8c480aeda1a87729a041b4f8a0991f)
+        version: 1.4.22(b5c9519a5ec826f23869f339a406377e)
+      '@powersync/react':
+        specifier: ^2.0.0
+        version: 2.0.0(react@19.2.3)
+      '@powersync/react-native':
+        specifier: ^2.0.2
+        version: 2.1.0(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3)
       better-auth:
         specifier: 1.4.22
-        version: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
+        version: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
       expo:
         specifier: ~57.0.9
         version: 57.0.9(@babel/core@7.29.7)(@expo/dom-webview@57.0.1)(react-dom@19.2.8(react@19.2.3))(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3)(typescript@6.0.3)
@@ -150,10 +165,10 @@ importers:
         version: 1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))
       better-auth:
         specifier: 1.4.22
-        version: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
+        version: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
       nitro:
         specifier: 3.0.260610-beta
-        version: 3.0.260610-beta(better-sqlite3@12.11.1)(chokidar@5.0.0)(dotenv@17.4.2)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(giget@3.3.1)(jiti@2.7.0)(lru-cache@11.5.2)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))
+        version: 3.0.260610-beta(better-sqlite3@12.11.1)(chokidar@5.0.0)(dotenv@17.4.2)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(giget@3.3.1)(jiti@2.7.0)(lru-cache@11.5.2)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))
       react:
         specifier: ^19.2.0
         version: 19.2.8
@@ -303,6 +318,19 @@ importers:
         version: 6.0.3
 
   packages/tsconfig: {}
+
+  packages/validation:
+    dependencies:
+      zod:
+        specifier: ^4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@app-starter-kit/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: ^6.0.2
+        version: 6.0.3
 
 packages:
 
@@ -1650,6 +1678,16 @@ packages:
     resolution: {integrity: sha512-hAX0pT/73190NLqBPPWSdBVGtbY6VOhWYK3qqHqtXQ1gK7kS2yz4+ivsN07hpJ6I3aeMtKP6J6npsEKOAzuTLA==}
     engines: {node: '>=20.0'}
 
+  '@op-engineering/op-sqlite@17.2.0':
+    resolution: {integrity: sha512-TmJSf83WGVZQ13RoYf+5oUrM2v7AenjifXeVwmyOqgXZaDL/dfnQDaVioD+3v8VH9syki3iyAI/fGUCZkJ3yYg==}
+    peerDependencies:
+      '@sqlite.org/sqlite-wasm': '*'
+      react: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      '@sqlite.org/sqlite-wasm':
+        optional: true
+
   '@oxc-parser/binding-android-arm-eabi@0.120.0':
     resolution: {integrity: sha512-WU3qtINx802wOl8RxAF1v0VvmC2O4D9M8Sv486nLeQ7iPHVmncYZrtBhB4SYyX+XZxj2PNnCcN+PW21jHgiOxg==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -1797,6 +1835,14 @@ packages:
 
   '@powersync/common@2.0.0':
     resolution: {integrity: sha512-GuWmk0w0Y6I1HDwX4uGFzzw1e4E4bkvDSSCpVikdTEIk1xcW5NNnqTX8xfDheZdoQZunm/XushrR/LsIp1Yc/g==}
+
+  '@powersync/react-native@2.1.0':
+    resolution: {integrity: sha512-IMpCgExjA9AwrJXa9FZ0iraD8AZlmu0pqq0riwow3pZiJV+V+MfrS1oJmXMcrexJfQYI4Mrg6kdbLiRfqp79WQ==}
+    peerDependencies:
+      '@op-engineering/op-sqlite': ^17.1.0
+      '@powersync/common': ^2.1.0
+      react: '*'
+      react-native: '*'
 
   '@powersync/react@2.0.0':
     resolution: {integrity: sha512-HCIhyGRWOVjWOEyLfDhFCHhVmchtzNFIP0RKKjCsXiCr9pCfmuE5FHtI5LR5BdqgrVn0n0RcpH8LbGyxP8iVxg==}
@@ -2757,10 +2803,12 @@ packages:
   '@xmldom/xmldom@0.8.13':
     resolution: {integrity: sha512-KRYzxepc14G/CEpEGc3Yn+JKaAeT63smlDr+vjB8jRfgTBBI9wRj/nkQEO+ucV8p8I9bfKLWp37uHgFrbntPvw==}
     engines: {node: '>=10.0.0'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@xmldom/xmldom@0.9.10':
     resolution: {integrity: sha512-A9gOqLdi6cV4ibazAjcQufGj0B1y/vDqYrcuP6d/6x8P27gRS8643Dj9o1dEKtB6O7fwxb2FgBmJS2mX7gpvdw==}
     engines: {node: '>=14.6'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@zip.js/zip.js@2.8.34':
     resolution: {integrity: sha512-+6a3lyqq69rpseLbvDPiVIWsZ/HdTGAAD6afFtug6ECPDGttb2dHnPC6cJgdPofYkzL9OvXizegq+DQVfL2rnA==}
@@ -6882,7 +6930,7 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@better-auth/cli@1.4.22(@better-fetch/fetch@1.1.21)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-call@1.1.8(zod@4.4.3))(drizzle-kit@0.31.10)(jose@6.2.8)(kysely@0.29.4)(nanostores@1.4.2)(postgres@3.4.9)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))':
+  '@better-auth/cli@1.4.22(@better-fetch/fetch@1.1.21)(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-call@1.1.8(zod@4.4.3))(drizzle-kit@0.31.10)(jose@6.2.8)(kysely@0.29.4)(nanostores@1.4.2)(postgres@3.4.9)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/preset-react': 7.29.7(@babel/core@7.29.7)
@@ -6894,13 +6942,13 @@ snapshots:
       '@mrleebo/prisma-ast': 0.13.1
       '@prisma/client': 5.22.0
       '@types/pg': 8.20.3
-      better-auth: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.41.0(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
+      better-auth: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.41.0(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
       better-sqlite3: 12.11.1
       c12: 3.3.4
       chalk: 5.6.2
       commander: 12.1.0
       dotenv: 17.4.2
-      drizzle-orm: 0.41.0(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
+      drizzle-orm: 0.41.0(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
       open: 10.2.0
       pg: 8.22.0
       prettier: 3.9.6
@@ -6976,11 +7024,11 @@ snapshots:
       nanostores: 1.4.2
       zod: 4.4.3
 
-  '@better-auth/expo@1.4.22(18c9b9f0c1337b2743f820c040a5682a)':
+  '@better-auth/expo@1.4.22(a5fa77df32a198f99e01bd2417599759)':
     dependencies:
       '@better-auth/core': 1.4.22(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.21)(better-call@1.1.8(zod@4.4.3))(jose@6.2.8)(kysely@0.29.4)(nanostores@1.4.2)
       '@better-fetch/fetch': 1.1.21
-      better-auth: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
+      better-auth: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
       better-call: 1.1.8(zod@4.4.3)
       zod: 4.4.3
     optionalDependencies:
@@ -6989,11 +7037,11 @@ snapshots:
       expo-network: 57.0.1(expo@57.0.9)(react@19.2.8)
       expo-web-browser: 57.0.2(expo@57.0.9)(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))
 
-  '@better-auth/expo@1.4.22(9a8c480aeda1a87729a041b4f8a0991f)':
+  '@better-auth/expo@1.4.22(b5c9519a5ec826f23869f339a406377e)':
     dependencies:
       '@better-auth/core': 1.4.22(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.21)(better-call@1.1.8(zod@4.4.3))(jose@6.2.8)(kysely@0.29.4)(nanostores@1.4.2)
       '@better-fetch/fetch': 1.1.21
-      better-auth: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
+      better-auth: 1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))
       better-call: 1.1.8(zod@4.4.3)
       zod: 4.4.3
     optionalDependencies:
@@ -8046,6 +8094,17 @@ snapshots:
 
   '@oozcitak/util@10.0.0': {}
 
+  '@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3)':
+    dependencies:
+      react: 19.2.3
+      react-native: 0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3)
+
+  '@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8)':
+    dependencies:
+      react: 19.2.8
+      react-native: 0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8)
+    optional: true
+
   '@oxc-parser/binding-android-arm-eabi@0.120.0':
     optional: true
 
@@ -8126,10 +8185,22 @@ snapshots:
 
   '@powersync/common@2.0.0': {}
 
+  '@powersync/react-native@2.1.0(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3)':
+    dependencies:
+      '@op-engineering/op-sqlite': 17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3)
+      '@powersync/react': 2.0.0(react@19.2.3)
+      '@powersync/shared-internals': 1.1.1(@powersync/common@2.0.0)
+      react: 19.2.3
+      react-native: 0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3)
+
   '@powersync/react@2.0.0(@powersync/common@2.0.0)(react@19.2.8)':
     dependencies:
       '@powersync/common': 2.0.0
       react: 19.2.8
+
+  '@powersync/react@2.0.0(react@19.2.3)':
+    dependencies:
+      react: 19.2.3
 
   '@powersync/shared-internals@1.1.1(@powersync/common@2.0.0)':
     dependencies:
@@ -9596,7 +9667,7 @@ snapshots:
 
   basic-ftp@5.3.1: {}
 
-  better-auth@1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.41.0(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))):
+  better-auth@1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.41.0(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))):
     dependencies:
       '@better-auth/core': 1.4.22(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.21)(better-call@1.1.8(zod@4.4.3))(jose@6.2.8)(kysely@0.28.17)(nanostores@1.4.2)
       '@better-auth/telemetry': 1.4.22(@better-auth/core@1.4.22(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.21)(better-call@1.1.8(zod@4.4.3))(jose@6.2.8)(kysely@0.29.4)(nanostores@1.4.2))
@@ -9615,14 +9686,14 @@ snapshots:
       '@tanstack/react-start': 1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))
       better-sqlite3: 12.11.1
       drizzle-kit: 0.31.10
-      drizzle-orm: 0.41.0(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
+      drizzle-orm: 0.41.0(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
       pg: 8.22.0
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
       solid-js: 1.9.14
       vitest: 4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))
 
-  better-auth@1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))):
+  better-auth@1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))):
     dependencies:
       '@better-auth/core': 1.4.22(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.21)(better-call@1.1.8(zod@4.4.3))(jose@6.2.8)(kysely@0.28.17)(nanostores@1.4.2)
       '@better-auth/telemetry': 1.4.22(@better-auth/core@1.4.22(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.21)(better-call@1.1.8(zod@4.4.3))(jose@6.2.8)(kysely@0.29.4)(nanostores@1.4.2))
@@ -9641,14 +9712,14 @@ snapshots:
       '@tanstack/react-start': 1.168.35(crossws@0.4.10(srvx@0.11.22))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))
       better-sqlite3: 12.11.1
       drizzle-kit: 0.31.10
-      drizzle-orm: 0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
+      drizzle-orm: 0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
       pg: 8.22.0
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
       solid-js: 1.9.14
       vitest: 4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))
 
-  better-auth@1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))):
+  better-auth@1.4.22(@prisma/client@5.22.0)(@tanstack/react-start@1.168.35(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)))(better-sqlite3@12.11.1)(drizzle-kit@0.31.10)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(pg@8.22.0)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(solid-js@1.9.14)(vitest@4.1.10(@types/node@22.20.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))):
     dependencies:
       '@better-auth/core': 1.4.22(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.21)(better-call@1.1.8(zod@4.4.3))(jose@6.2.8)(kysely@0.28.17)(nanostores@1.4.2)
       '@better-auth/telemetry': 1.4.22(@better-auth/core@1.4.22(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.21)(better-call@1.1.8(zod@4.4.3))(jose@6.2.8)(kysely@0.29.4)(nanostores@1.4.2))
@@ -9667,7 +9738,7 @@ snapshots:
       '@tanstack/react-start': 1.168.35(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.3))(react@19.2.3)(rolldown@1.2.0)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0))
       better-sqlite3: 12.11.1
       drizzle-kit: 0.31.10
-      drizzle-orm: 0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
+      drizzle-orm: 0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
       pg: 8.22.0
       react: 19.2.3
       react-dom: 19.2.8(react@19.2.3)
@@ -10036,10 +10107,10 @@ snapshots:
 
   dayjs@1.11.21: {}
 
-  db0@0.3.4(better-sqlite3@12.11.1)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)):
+  db0@0.3.4(better-sqlite3@12.11.1)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)):
     optionalDependencies:
       better-sqlite3: 12.11.1
-      drizzle-orm: 0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
+      drizzle-orm: 0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)
 
   debug@2.6.9:
     dependencies:
@@ -10133,8 +10204,9 @@ snapshots:
       esbuild: 0.25.12
       tsx: 4.23.5
 
-  drizzle-orm@0.41.0(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9):
+  drizzle-orm@0.41.0(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9):
     optionalDependencies:
+      '@op-engineering/op-sqlite': 17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8)
       '@prisma/client': 5.22.0
       '@types/pg': 8.20.3
       better-sqlite3: 12.11.1
@@ -10142,8 +10214,20 @@ snapshots:
       pg: 8.22.0
       postgres: 3.4.9
 
-  drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9):
+  drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9):
     optionalDependencies:
+      '@op-engineering/op-sqlite': 17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.3))(react@19.2.3)
+      '@prisma/client': 5.22.0
+      '@types/pg': 8.20.3
+      better-sqlite3: 12.11.1
+      kysely: 0.29.4
+      pg: 8.22.0
+      postgres: 3.4.9
+    optional: true
+
+  drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9):
+    optionalDependencies:
+      '@op-engineering/op-sqlite': 17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8)
       '@prisma/client': 5.22.0
       '@types/pg': 8.20.3
       better-sqlite3: 12.11.1
@@ -11660,11 +11744,11 @@ snapshots:
 
   nf3@0.3.23: {}
 
-  nitro@3.0.260610-beta(better-sqlite3@12.11.1)(chokidar@5.0.0)(dotenv@17.4.2)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(giget@3.3.1)(jiti@2.7.0)(lru-cache@11.5.2)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)):
+  nitro@3.0.260610-beta(better-sqlite3@12.11.1)(chokidar@5.0.0)(dotenv@17.4.2)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))(giget@3.3.1)(jiti@2.7.0)(lru-cache@11.5.2)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)):
     dependencies:
       consola: 3.4.2
       crossws: 0.4.10(srvx@0.11.22)
-      db0: 0.3.4(better-sqlite3@12.11.1)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))
+      db0: 0.3.4(better-sqlite3@12.11.1)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))
       env-runner: 0.1.16
       h3: 2.0.1-rc.22(crossws@0.4.10(srvx@0.11.22))
       hookable: 6.1.1
@@ -11675,7 +11759,7 @@ snapshots:
       rolldown: 1.2.0
       srvx: 0.11.22
       unenv: 2.0.0-rc.24
-      unstorage: 2.0.0-alpha.7(chokidar@5.0.0)(db0@0.3.4(better-sqlite3@12.11.1)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)))(lru-cache@11.5.2)(ofetch@2.0.0-alpha.3)
+      unstorage: 2.0.0-alpha.7(chokidar@5.0.0)(db0@0.3.4(better-sqlite3@12.11.1)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)))(lru-cache@11.5.2)(ofetch@2.0.0-alpha.3)
     optionalDependencies:
       dotenv: 17.4.2
       giget: 3.3.1
@@ -12804,10 +12888,10 @@ snapshots:
       rolldown: 1.2.0
       vite: 8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.5)(yaml@2.9.0)
 
-  unstorage@2.0.0-alpha.7(chokidar@5.0.0)(db0@0.3.4(better-sqlite3@12.11.1)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)))(lru-cache@11.5.2)(ofetch@2.0.0-alpha.3):
+  unstorage@2.0.0-alpha.7(chokidar@5.0.0)(db0@0.3.4(better-sqlite3@12.11.1)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9)))(lru-cache@11.5.2)(ofetch@2.0.0-alpha.3):
     optionalDependencies:
       chokidar: 5.0.0
-      db0: 0.3.4(better-sqlite3@12.11.1)(drizzle-orm@0.44.7(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))
+      db0: 0.3.4(better-sqlite3@12.11.1)(drizzle-orm@0.44.7(@op-engineering/op-sqlite@17.2.0(react-native@0.86.2(@babel/core@7.29.7)(@types/react@19.2.17)(react@19.2.8))(react@19.2.8))(@prisma/client@5.22.0)(@types/pg@8.20.3)(better-sqlite3@12.11.1)(kysely@0.29.4)(pg@8.22.0)(postgres@3.4.9))
       lru-cache: 11.5.2
       ofetch: 2.0.0-alpha.3
 

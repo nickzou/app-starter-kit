@@ -20,7 +20,6 @@ beforeAll(async () => {
     id: userId,
     name: "Notes Test User",
     email: `${userId}@example.com`,
-    emailVerified: true,
   })
 })
 

@@ -1,7 +1,7 @@
 import { TRPCError } from "@trpc/server"
 import { and, desc, eq, isNull } from "drizzle-orm"
 import { notes } from "../../db/schema"
-import { newNoteSchema, type Note, noteIdSchema, updateNoteSchema } from "../../domain"
+import { type Note, newNoteSchema, noteIdSchema, updateNoteSchema } from "../../domain"
 import { protectedProcedure, router } from "../init"
 
 // Map a DB row to the wire/domain Note: drop the DB-only `userId`, and convert
